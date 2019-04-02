@@ -1,15 +1,11 @@
 #!/bin/bash
 
 HOFF=~/hoff.jpg
-S=~/set_hoff_desktop.sh
-curl -q -o $HOFF https://github.com/rmilne/hoffer/raw/master/img/h0.jpg
-curl -q -o $S https://github.com/rmilne/hoffer/raw/master/set-desktop-mojave.sh
+S=~/hoff.swift
 
-echo bash $S $H
-bash $S $H
+curl -s -o $HOFF https://raw.githubusercontent.com/rmilne/hoffer/master/img/h0.jpg
+curl -s -o $S https://raw.githubusercontent.com/rmilne/hoffer/master/desktoppr.swift
+swift $S $HOFF
 
-#echo osascript -e "tell application \"System Events\" to tell every desktop to set picture to \"${H}\""
-#osascript -e "tell application \"System Events\" to tell every desktop to set picture to \"${H}\""
+echo "$? hoffed"
 
-echo "hoffed"
-#
