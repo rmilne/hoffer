@@ -90,7 +90,7 @@ func parseURL(path : String) -> URL? {
         return url
     } else {
         errprint("no file: \(path)")
-        exit(1)
+        //exit(1)
     }
     return nil
 }
@@ -102,7 +102,12 @@ func desktopImagePath(for screen : NSScreen) -> String {
 
 func setDesktopImage(url : URL, for screen : NSScreen) {
     let ws = NSWorkspace.shared
-    try! ws.setDesktopImageURL(url, for: screen)
+    guard var options = ws.desktopImageOptions(for: screen) else {
+        return
+    }
+    options[NSWorkspace.DesktopImageOptionKey.imageScaling] = 3
+    options[NSWorkspace.DesktopImageOptionKey.allowClipping] = false
+    try! ws.setDesktopImageURL(url, for: screen, options: options)
 }
 
 func main() {
@@ -139,6 +144,7 @@ func main() {
         // display the desktop image path
         switch screenOption {
         case .all:
+	    print(NSScreen.screens.count)
             for screen in NSScreen.screens {
                 print(desktopImagePath(for: screen))
             }
